@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopify ~ Home</title>
+    <style>
+      body{
+        background-color: #eeeeee;
+        margin: 0;
+      }
+      header{
+        background-color: black;
+        padding: 20px 0 5px 0;
+        position: fixed;
+        width: 100%;
+        border-bottom: 1px solid #D3D3D3;
+        margin-top: -97px;
+      }
+      header>img{
+        height: 6%;
+        width: 6%;
+        float: left;
+        margin-left: 20px;
+        cursor: pointer;
+        margin-top: 5px;
+      }
+      header>label{
+        color: white;
+        width: 30%;
+        padding: 40px;
+        margin: -30px 0 0 410px;
+        font-size: 18px;
+        position: absolute;
+      }
+      header>button{
+        border-radius: 5px 5px;
+        cursor: pointer;
+        padding: 5px;
+        width: 5%;
+        font-size: 15px;
+      }
+      header>button[name=discardbtn]{
+        border: 1px solid grey;
+        text-decoration: none;
+        margin: 5px 20px 0 1210px;
+        background-color: black;
+        color: white;
+      }
+      header>button[name=savebtn]{
+        border: 0px;
+        text-decoration: none;
+        margin: 5px 20px 0 0;
+        background-color: #046307;
+        color: white;
+      }
+      button:hover{
+        background-color: #eeeeee;
+        border-radius: 5px 5px;
+      }
+      .sidebar{
+        height: 100%;
+        width: 220px;
+        margin-top: -33px;
+        position: fixed;
+        background-color: #eeeeee;
+        border-right: 1px solid #D3D3D3;
+      }
+      .sidebar>button{
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
+        border: 0px;
+        background-color: #eeeeee;
+        padding: 10px;
+        padding-left: 30px;
+      }
+      .sidebar>button:hover{
+        background-color: #e5e4e2;
+        width: 100%;
+      }
+      #product>button{
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
+        border: 0px;
+        background-color: #eeeeee;
+        color: #333333;
+        padding: 10px;
+        padding-left: 30px;
+      }
+      #product>button:hover{
+        background-color: #e5e4e2;
+        color: #046307;
+        width: 100%;
+      }
+      #setting{
+        margin: 550px 0 0 0;
+      }
+      sidebar>button[name=onlinestore]{
+        margin-top: 5px;
+      }
+      sidebar>button[name=apps]{
+        margin-bottom: 25px;
+      }
+      .sidebar>label{
+        color: grey;
+        font-size: 13px;
+        margin-top: 100px;
+        margin-left: 20px;
+      }
+      .con{
+        margin-left: 585px;
+        margin-top: 85px;
+        font-size: 20px;
+      }
+      .titleform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+      }
+      #title{
+        font-size: 20px;
+      }
+      #title>button[name=back]{
+        cursor: pointer;
+        padding: 10px;
+      }
+      #title>p{
+        position: absolute;
+        margin: -32px 0 0 70px;
+      }
+      input[name=title]{
+        width: 96%;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px 5px;
+        border:1px solid grey;
+      }
+      textarea{
+        resize: none;
+        width: 96%;
+        border-radius: 5px 5px;
+        border:1px solid grey;
+        margin-top: 8px;
+        padding: 10px;
+      }
+      .mediaform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .mediaform>p{
+        padding: 0 0 10px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      .mediaform>a{
+        float: right;
+        margin-top: -30px;
+        text-decoration: none;
+        color: blue;
+        font-size: 15px;
+      }
+      .mediaform>a:hover{
+        text-decoration: underline;
+      }
+      .uploadform{
+        border-style: dashed;
+        border-width: 2px;
+        border-color: grey;
+        border-radius: 5px 5px;
+        padding: 50px;
+        text-align:center;
+        cursor: pointer;
+      }
+      .uploadform:hover{
+        background-color: #F5F5F5;
+      }
+      .uploadform>label{
+        position: absolute;
+        cursor: pointer;
+        margin: 40px 0 0 -50px;
+        padding:12px;
+        background-color: white;
+        border:1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      .uploadform>label:hover{
+        background-color: #F5F5F5;
+      }
+      .uploadform>p{
+        margin-top: 75px;
+        color: grey;
+      }
+      .pricingform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .pricingform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      #price{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      #compare{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 256px;
+        font-size: 15px;
+      }
+      #cost{
+        font-size: 15px;
+      }
+      hr{
+        width:100%;
+        margin: 20px 0 20px 0;
+
+      }
+      input[name=price]{
+        width: 40%;
+        padding: 10px;
+        margin: 10px 28px 5px 0px;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      input[name=compare]{
+        width: 40%;
+        padding: 10px;
+        margin: 10px 0 5px 0;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      input[name=cost]{
+        width: 40%;
+        padding: 10px;
+        margin: 10px 28px 0 0px;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      #profit{
+        margin: 8px 0 0 100px;
+        position: absolute;
+        font-size: 15px;
+      }
+      #margin{
+        margin: 8px 0 0 0;
+        position: absolute;
+        font-size: 15px;
+      }
+      #marginvalue{
+        margin: 25px 90px 0 -1px;
+        position: absolute;
+        font-size: 15px;
+      }
+      #profitvalue{
+        margin: 25px 90px 0 101px;
+        position: absolute;
+        font-size: 15px;
+      }
+      #see_desc{
+        color: grey;
+        font-size: 15px;
+        padding-top: 10px;
+      }
+      input[name=tax]{
+        margin-right: 10px;
+        font-size: 15px;
+        margin-left: 0;
+      }
+      .inventoryform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .inventoryform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      #sku{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      #barcode{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 132px;
+        font-size: 15px;
+      }
+      input[name=sku]{
+        width: 40%;
+        padding: 10px;
+        margin: 10px 36px 20px 0px;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      input[name=barcode]{
+        width: 40%;
+        padding: 10px;
+        margin: 10px 0 20px 0;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      #tax_desc,#quantity_desc,#continue_desc,#ship_desc,#variant_desc,#store_desc{
+        cursor: pointer;
+        font-size: 16px;
+      }
+      input[name=quantity]{
+        margin-right: 10px;
+        font-size: 15px;
+        margin-left: 0;
+      }
+      input[name=continue]{
+        margin-right: 10px;
+        font-size: 15px;
+        margin-left: 0;
+        margin-top: 10px;
+      }
+      input[name=quantityvalue]{
+        width: 40%;
+        padding: 10px;
+        margin: 5px 0 10px 0;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        font-size: 15px;
+      }
+      #quantity_sec>p{
+        font-size: 12px;
+        font-weight: bold;
+      }
+      #quantity_sec>label{
+        font-size: 15px;
+      }
+      .shippingform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .shippingform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      input[name=product]{
+        margin-right: 10px;
+        font-size: 15px;
+        margin-left: 0;
+      }
+      #weight_title{
+        font-size: 12px;
+        font-weight: bold;
+      }
+      #custom_title{
+        font-size: 12px;
+        font-weight: bold;
+      }
+      #weight_desc,#custom_desc,#custom_info,#hs_desc,#country_desc,#title_char,#desc_char{
+        color: grey;
+        font-size: 15px;
+      }
+      input[name=weight]{
+        width: 25%;
+        padding: 10px;
+        margin: 10px 5px 0 0px;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+      }
+      #weight_title2,#country_region,#hs_title{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      .weight{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        padding:8px;
+      }
+      .country{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        width: 99%;
+      }
+      input[name=hs]{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        width: 95%;
+      }
+      .variantform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .variantform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      .variantform>hr{
+        width:100%;
+        margin: 20px 0 10px 0;
+      }
+      #option_title{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+      #options{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        padding:8px;
+        margin: 10px 15px 10px 0;
+      }
+      #op1,#op2,#op3{
+        font-size: 17px;
+        font-weight: bold;
+      }
+      input[name=separate]{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        width: 78%;
+      }
+      .searchengineform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 20px;
+        width: 45%;
+        border-radius: 10px 10px;
+        font-size: 18px;
+      }
+      .searchengineform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      #search_desc{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 17px;
+      }
+      #page_title,#desc_title,#url_title{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 17px;
+      }
+      #search_desc{
+        padding: 10px;
+      }
+      input[name=link]{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        width: 96%;
+      }
+      .productstatusform{
+        padding:15px;
+        border-radius: 10px 10px;
+        background-color: white;
+        width: 25%;float: right;
+        margin: -2907px 300px 0 0;
+      }
+      .productstatusform>p{
+        padding: 0 0 20px 0;
+        margin: 0 0 0 0;
+        font-weight: bold;
+      }
+      #active,#draft{
+        color: grey;
+        font-size: 15px;
+      }
+      input[name=sales]{
+        font-size: 15px;
+        margin: 10px 10px 10px 0;
+      }
+      #status{
+        background-color:white;
+        border: 1px solid #b5b5b5;
+        border-radius: 5px 5px;
+        padding:8px;
+        margin: 10px 0 10px 0;
+        width: 98%;
+      }
+      #sales_title{
+        font-size: 12px;
+        font-weight: bold;
+      }
+      #time_desc{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        font-size: 15px;
+        margin-left: 28px;
+      }
+      input[name=time]{
+        margin: 10px 0 10px 28px;
+        width: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <content/>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: 'shopify'
+          }
+        }
+      })
+      app.component('content',{
+        template:`
+        <header>
+          <img v-bind:src="logo" @click="goHome">
+          <label>Unsaved product</label>
+          <button type="button" name="discardbtn" @click=goBack>Discard</button>
+          <button type="button" name="savebtn">Save</button>
+        </header>
+        <div class="sidebar">
+          <button type="button" name="home" @click="goHome">Home</button>
+          <button type="button" name="orders">Orders</button>
+          <button type="button" name="products" @click="showproduct">Products</button>
+            <div id="product" hidden>
+              <button type="button" name="allproducts" @click="goHome">All products</button>
+              <button type="button" name="inventory">Inventory</button>
+              <button type="button" name="transfers">Transfers</button>
+              <button type="button" name="collections">Collections</button>
+              <button type="button" name="giftcards">Gift cards</button>
+            </div>
+          <button type="button" name="customers">Customers</button>
+          <button type="button" name="analytics">Analytics</button>
+          <button type="button" name="marketing">Marketing</button>
+          <button type="button" name="discounts">Discounts</button>
+          <button type="button" name="apps">Apps</button>
+          <label>SALES CHANNELS</label>
+          <button type="button" name="onlinestore">Online Store</button>
+          <button id="setting" type="button" name="setting">Settings</button>
+        </div>
+        <div class="con">
+          <div id="title">
+            <button type="button" name="back" @click="goBack">Back</button>
+            <p>Add product</p>
+          </div>
+
+          <form class="titleform">
+            <div class="title">
+              <label>Title</label>
+              <input type="text" name="title" placeholder="Short sleeve t-shirt">
+              <label>Description</label>
+              <textarea name="desc" rows="11" cols="80"></textarea>
+            </div>
+          </form>
+
+          <form class="mediaform">
+            <p>Media</p>
+            <a href="#">Add media from URL</a>
+            <form class="uploadform">
+              <input type="file" id="uploadfile" hidden>
+              <label for="uploadfile">Add files</label><br>
+              <p>or drop files to upload</p>
+            </form>
+          </form>
+
+          <form class="pricingform">
+            <p>Pricing</p>
+            <label id="price">Price</label>
+            <label id="compare">Compare at price</label>
+            <br>
+            <input type="text" name="price" placeholder="MYR 0.00">
+            <input type="text" name="compare" placeholder="MYR 0.00">
+            <hr>
+            <label id="cost">Cost per item</label>
+            <br>
+            <input type="text" name="cost" placeholder="MYR 0.00">
+            <label id="margin">Margin</label>
+            <label id="profit">Profit</label>
+            <label id="marginvalue">-</label>
+            <label id="profitvalue">-</label>
+            <br>
+            <label id="see_desc">Customers won't see this</label>
+            <br><br>
+            <input id="tax" type="checkbox" name="tax" checked><label id="tax_desc" for="tax">Charge tax on this product</label>
+          </form>
+
+          <form class="inventoryform">
+            <p>Inventory</p>
+            <label id="sku">SKU (Stock Keeping Unit)</label>
+            <label id="barcode">Barcode (ISBN, UPC, GTIN, etc.)</label>
+            <br>
+            <input type="text" name="sku">
+            <input type="text" name="barcode">
+            <br>
+            <input id="quantity" type="checkbox" name="quantity" @click="showstock" checked><label id="quantity_desc" for="quantity">Track quantity</label>
+            <br>
+            <div id="quantity_sec">
+              <input id="continue" type="checkbox" name="continue"><label id="continue_desc" for="continue">Continue selling when out of stock</label>
+              <hr>
+              <p>QUANTITY</p>
+              <label>Available</label><br>
+              <input type="number" name="quantityvalue" value="0">
+            </div>
+          </form>
+
+          <form class="shippingform">
+            <p>Shipping</p>
+            <input id="product_type" type="checkbox" name="product" @click="showship" checked><label id="ship_desc" for="product_type">This is a physical product</label>
+            <hr>
+            <label id="weight_desc" hidden>Customers won’t enter their shipping address or choose a shipping method when buying this product.</label>
+            <div id="custom">
+              <label id="weight_title">WEIGHT</label><br>
+              <label id="custom_desc">Used to calculate shipping rates at checkout and label prices during fulfillment.</label>
+              <br><br>
+              <label id="weight_title2">Weight</label>
+              <br>
+              <input type="text" name="weight" value="0.0">
+              <select class="weight" name="weight">
+                <option>lb</option>
+                <option>oz</option>
+                <option>kg</option>
+                <option>g</option>
+              </select>
+              <hr>
+              <label id="custom_title">CUSTOMS INFORMATION</label><br>
+              <label id="custom_info">Customs authorities use this information to calculate duties when shipping internationally. Shown on printed customs forms.</label>
+              <br><br>
+              <label id="country_region">Country/Region of origin</label><br>
+              <select class="country">
+                <option>Select country/region</option>
+                <option>Malaysia</option>
+                <option>Singapore</option>
+                <option>China</option>
+                <option>Japan</option>
+                <option>Korea</option>
+                <option>Indonesia</option>
+                <option>Vietnam</option>
+                <option>Thailand</option>
+                <option>Philipines</option>
+              </select><br>
+              <label id="country_desc">In most cases, where the product is manufactured.</label><br><br>
+              <label id="hs_title">HS (Harmonized System) code</label><br>
+              <input type="text" name="hs" placeholder="Search or enter a HS code"><br>
+              <label id="hs_desc">Manually enter codes that are longer than 6 numbers.</label>
+            </div>
+          </form>
+
+          <form class="variantform">
+            <p>Variants</p>
+            <input id="variant" type="checkbox" @click="variants"><label id="variant_desc" for="variant">This product has multiple options, like different sizes or colors</label>
+            <br>
+            <hr>
+            <div id="showvariant" hidden>
+              <label id="option_title">OPTIONS</label>
+              <br><br>
+              <label id="op1">Option 1</label>
+              <br>
+              <select id="options">
+                <option>Size</option>
+                <option>Color</option>
+                <option>Material</option>
+                <option>Title</option>
+              </select>
+              <input type="text" name="separate" placeholder="Separate options with a comma">
+              <hr>
+              <label id="op1">Option 2</label>
+              <br>
+              <select id="options">
+                <option>Size</option>
+                <option>Color</option>
+                <option>Material</option>
+                <option>Title</option>
+              </select>
+              <input type="text" name="separate" placeholder="Separate options with a comma">
+              <hr>
+              <label id="op1">Option 3</label>
+              <br>
+              <select id="options">
+                <option>Size</option>
+                <option>Color</option>
+                <option>Material</option>
+                <option>Title</option>
+              </select>
+              <input type="text" name="separate" placeholder="Separate options with a comma">
+          </form>
+
+          <form class="searchengineform">
+            <p>Search engine listing preview</p>
+            <label id="search_desc">Add a title to see how this product might appear in a search engine listing</label>
+            <hr>
+            <div>
+              <label id="page_title">Page title</label><br>
+              <input type="text" name="title">
+              <label id="title_char">0 of 70 characters used</label>
+            </div>
+            <br>
+            <div>
+              <label id="desc_title">Description</label><br>
+              <textarea id="search_desc" rows="11" cols="80"></textarea>
+              <label id="desc_char">0 of 320 characters used<label>
+            </div>
+            <br>
+            <div>
+              <label id="url_title">URL and handle</label><br>
+              <input type="text" name="link" value="https://shopify.com/product/">
+            </div>
+          </form>
+          <br>
+
+          <form class="productstatusform">
+            <p>Product status</p>
+            <select id="status">
+              <option>Active</option>
+              <option>Draft</option>
+            </select>
+            <br>
+            <label id="active">Active - This product will be available to 1 sales channel.</label>
+            <br>
+            <label id="draft">Draft - This product will be hidden from all sales channels.</label>
+            <hr>
+              <label id="sales_title">SALES CHANNELS AND APPS</label>
+              <br>
+              <input id="sales" type="checkbox" name="sales" @click="showtime" checked><label for="sales" id="store_desc"> Online Store</label>
+            <div id="date">
+              <label for="time" id="time_desc">Schedule availability</label>
+              <br>
+              <input type="date" id="time" name="time">
+            </div>
+          </form>
+        </div>
+        `,
+        data() {
+          return {
+            logo: './assets/shopify1.svg',
+          }
+        },
+        methods:{
+          showproduct(){
+            var x = document.getElementById('product')
+            var y = document.getElementById('setting')
+            if(x.hidden==true){
+              x.hidden=false
+              y.style.margin='375px 0 0 0'
+            }else{
+              x.hidden=true
+              y.style.margin='550px 0 0 0'
+            }
+          },
+          goproductpage(){
+            location.href='./products.html'
+          },
+          goBack(){
+            window.history.back();
+          },
+          goHome(){
+            location.href='./home.html'
+          },
+          showstock(){
+            var qs = document.getElementById('quantity_sec')
+            if(qs.hidden==false){
+              qs.hidden=true
+            }else{
+              qs.hidden=false
+            }
+          },
+          showship(){
+            var c = document.getElementById('custom')
+            var w_desc = document.getElementById('weight_desc')
+            if (c.hidden==false) {
+              c.hidden=true
+              w_desc.hidden=false
+            }else{
+              c.hidden=false
+              w_desc.hidden=true
+            }
+          },
+          variants(){
+            var v = document.getElementById('showvariant')
+            if (v.hidden==true) {
+              v.hidden=false
+            }else{
+              v.hidden=true
+            }
+          },
+          showtime(){
+            var t = document.getElementById('date')
+            if (t.hidden==false) {
+              t.hidden=true
+            }else {
+              t.hidden=false
+            }
+          }
+        },
+      })
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>

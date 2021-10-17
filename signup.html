@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup ~ Shopify</title>
+    <style>
+      body{
+        background-color: #046307;
+        font-family: arial;
+      }
+      form{
+        background-color: white;
+        border-radius: 10px 10px;
+        margin: 30px 1190px 100px 150px;
+        padding-right: 10px;
+      }
+      img{
+        height: 25%;
+        width: 25%;
+      }
+      .input {
+        display: block;
+        font-size: 15px;
+        padding: 12px;
+        width: 88%;
+      }
+      button{
+        color: white;
+        background-color: #046307;
+        padding: 10px 15px 10px 15px;
+        border-radius: 10px 10px;
+        width: 35%;
+        font-size: 15px;
+      }
+      .form {
+        padding: 50px 0px 25px 50px;
+      }
+      .desc {
+        color: grey;
+        font-size: 15px;
+      }
+      #login{
+        font-weight: bold;
+        font-size: 25px;
+      }
+      a{
+        text-decoration: none;
+        color: green;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+      td{
+        padding-right: 15px;
+      }
+      td>input{
+        width: 100%;
+      }
+      input[name="show"]{
+        margin-right: 3px;
+      }
+      footer{
+        padding-top: 100px;
+        direction: rtl;
+      }
+      td>a{
+        color: #333333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <signup-form/>
+      </div>
+    </div>
+
+    <!--Mount App-->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: 'shopify'
+          }
+        }
+      })
+      app.component('signup-form',{
+        template:`
+          <form>
+          <div class=form>
+            <img v-bind:src="logo">
+            <p><span id="login">Create an account</span><br><span id="continue">The ecommerce platform made for you</p>
+            <label>Email</label>
+            <input class = "input" type="email" name="email" required/>
+            <br>
+              <tr>
+                <td>First name</td>
+                <td>Last name</td>
+              </tr>
+              <tr>
+                <td><input class = "input" type="text" name="First" required></td>
+                <td><input class = "input" type="text" name="Last" required></td>
+              </tr>
+            <p class = "desc">{{name_desc}}</p>
+            <p>Password</p>
+            <input class = "input" id = "p1" type="password" name="password" minlength="5" @click="showdesc" required>
+            <p class = "desc" id="passdesc" hidden>{{pass_desc}}</p>
+            <p>Confirm new password</p>
+            <input class = "input" id = "p2" type="password" name="npassword" minlength="5" required><br>
+            <input type="checkbox" name="show" @click="showPassword">Show Password
+            <p class = "desc"><span id="new">By proceeding, you agree to the </span><span id="getstarted"><a href="tnc.html">Terms and Conditions</a></span>
+            <br><br><br>
+            <button>Create account</button>
+            <br>
+            <p class = "desc"><span id="new">Already have an account? </span><span id="getstarted"><a v-bind:href="login">Log in</a></span>
+            <footer>
+            <tr>
+              <td><a href="#">Terms</a></td>
+              <td><a href="#">Privacy</a></td>
+              <td><a href="#">Help</a></td>
+            <tr>
+            </footer>
+          </div>
+          </form>
+        `,
+        data() {
+          return {
+            title: 'Shopify',
+            email: '',
+            password: '',
+            logo: './assets/shopify.png',
+            name_desc: 'Enter your first and last name as they appear on your government-issued ID.',
+            pass_desc: 'Your password must be at least 5 characters, and can’t begin or end with a space.',
+            login: 'login.html'
+          }
+        },
+        methods: {
+          showPassword(){
+            var x = document.getElementById('p1')
+            var y = document.getElementById('p2')
+            if(x.type === 'password') {
+              x.type = 'text'
+              y.type = 'text'
+            }else {
+              x.type = 'password'
+              y.type = 'password'
+            }
+          },
+          showdesc(){
+            var z =document.getElementById('passdesc')
+            if(z.hidden === true){
+              z.hidden = false
+            }
+          }
+        }
+      })
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>

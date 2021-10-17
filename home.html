@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopify ~ Home</title>
+    <style>
+      body{
+        background-color: #eeeeee;
+        margin: 0;
+      }
+      header>img{
+        height: 5%;
+        width: 5%;
+        float: left;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+      header>img:hover{
+        background-color: #e5e4e2;
+      }
+      header{
+        background-color: white;
+        padding: 20px 0 5px 0;
+        position: fixed;
+        width: 100%;
+        border-bottom: 1px solid #D3D3D3;
+        margin-top: -100px;
+      }
+      input[name=search]{
+        margin-left: 500px;
+        width: 30%;
+        padding: 12px;
+        margin-top: 5px;
+        background-color: #eeeeee;
+        border-radius: 5px 5px;
+        border-width:0;
+      }
+      header>button{
+        float: right;
+        cursor: pointer;
+        border: 0px;
+        text-decoration: none;
+        margin: 5px 20px 0 0;
+        background-color: white;
+        color: black;
+        font-size: 15px;
+        padding: 10px;
+      }
+      button:hover{
+        background-color: #eeeeee;
+        border-radius: 5px 5px;
+      }
+      .sidebar{
+        height: 100%;
+        width: 220px;
+        margin-top: -24px;
+        position: fixed;
+        background-color: #eeeeee;
+        border-right: 1px solid #D3D3D3;
+      }
+      .sidebar>button{
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
+        border: 0px;
+        background-color: #eeeeee;
+        padding: 10px;
+        padding-left: 30px;
+      }
+      .sidebar>button:hover{
+        background-color: #e5e4e2;
+        width: 100%;
+      }
+      #product>button{
+        text-align: left;
+        cursor: pointer;
+        width: 100%;
+        border: 0px;
+        background-color: #eeeeee;
+        color: #333333;
+        padding: 10px;
+        padding-left: 30px;
+      }
+      #product>button:hover{
+        background-color: #e5e4e2;
+        color: #046307;
+        width: 100%;
+      }
+      #setting{
+        margin: 500px 0 0 0;
+      }
+      button[name=onlinestore]{
+        margin-top: 5px;
+      }
+      button[name=apps]{
+        margin-bottom: 25px;
+      }
+      .sidebar>label{
+        color: grey;
+        font-size: 13px;
+        margin-top: 100px;
+        margin-left: 20px
+      }
+      .con{
+        margin-left: 260px;
+        margin-top: 85px;
+        font-size: 20px;
+      }
+      .con>button{
+        float: right;
+        margin-top: -55px;
+        margin-right: 20px;
+        font-size: 20px;
+        border: 0px;
+        cursor: pointer;
+        padding: 10px;
+      }
+      .con>button:hover{
+        background-color: #e5e4e2;
+      }
+      .addproductform{
+        background-color: white;
+        margin-top: 20px;
+        padding: 100px;
+        width: 1420px;
+        height: 400px;
+        text-align: center;
+        border-radius: 5px 5px;
+      }
+      #addmanage{
+        font-size: 20px;
+      }
+      .desc{
+        color: grey;
+        font-size: 15px;
+      }
+      button[name=addproductbtn]{
+        color: white;
+        background-color: #046307;
+        padding: 10px;
+        margin: 10px;
+        border: 0;
+        border-radius: 5px 5px;
+        cursor: pointer;
+      }
+      button[name=findproductbtn]{
+        padding: 10px;
+        margin: 10px;
+        border-width: 1px;
+        border-radius: 5px 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <content/>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: 'shopify'
+          }
+        }
+      })
+      app.component('content',{
+        template:`
+          <header>
+            <img v-bind:src="logo" @click="goHome">
+            <input type="text" name="search" placeholder="Search">
+            <button class="username">Username</button>
+          </header>
+          <div class="sidebar">
+            <button type="button" name="home" @click="goHome">Home</button>
+            <button type="button" name="orders">Orders</button>
+            <button type="button" name="products" @click="showproduct">Products</button>
+              <div id="product" hidden>
+                <button type="button" name="allproducts">All products</button>
+                <button type="button" name="inventory">Inventory</button>
+                <button type="button" name="transfers">Transfers</button>
+                <button type="button" name="collections">Collections</button>
+                <button type="button" name="giftcards">Gift cards</button>
+              </div>
+            <button type="button" name="customers">Customers</button>
+            <button type="button" name="analytics">Analytics</button>
+            <button type="button" name="marketing">Marketing</button>
+            <button type="button" name="discounts">Discounts</button>
+            <button type="button" name="apps">Apps</button>
+            <label>SALES CHANNELS</label>
+            <button type="button" name="onlinestore">Online Store</button>
+            <button id="setting" type="button" name="setting">Settings</button>
+          </div>
+          <div class="con">
+            <p>Products</p>
+            <button type="button" name="import">Import</button>
+            <form class="addproductform">
+              <img v-bind:src="productimg">
+              <p id="addmanage">Add and manage your products</p>
+              <p class="desc">This is where you’ll add products and manage your pricing. You<br> can also import and export your product inventory.</p>
+              <button type="button" name="addproductbtn" @click="goproductpage">Add Product</button>
+              <button type="button" name="findproductbtn">Find products</button>
+            </form>
+          </div>
+        `,
+        data() {
+          return {
+            logo: './assets/shopify.png',
+            productimg: './assets/product.svg'
+          }
+        },
+        methods:{
+          showproduct(){
+            var x = document.getElementById('product')
+            var y = document.getElementById('setting')
+            if(x.hidden==true){
+              x.hidden=false
+              y.style.margin='325px 0 0 0'
+            }else{
+              x.hidden=true
+              y.style.margin='500px 0 0 0'
+            }
+          },
+          goproductpage(){
+            location.href='./products.html'
+          },
+          goHome(){
+            location.href='./home.html'
+          }
+        },
+      })
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Shopify</title>
+    <style>
+      body{
+        background-color: #046307;
+        font-family: Arial;
+      }
+      form{
+        background-color: white;
+        border-radius: 10px 10px;
+        margin: 100px 1190px 100px 150px;
+      }
+      img{
+        height: 25%;
+        width: 25%;
+      }
+      input {
+        display: block;
+        font-size: 15px;
+        padding: 12px;
+        width: 88%;
+      }
+      button{
+        color: white;
+        background-color: #046307;
+        padding: 10px 15px 10px 15px;
+        border-radius: 10px 10px;
+        width: 20%;
+        font-size: 15px;
+      }
+      .form {
+        padding: 50px 20px 25px 50px;
+      }
+      #continue,#new {
+        color: grey;
+        font-size: 15px;
+      }
+      #login{
+        font-weight: bold;
+        font-size: 25px;
+      }
+      #getstarted{
+        font-size: 15px;
+      }
+      a{
+        text-decoration: none;
+        color: green;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+      footer{
+        padding-top: 100px;
+        direction: rtl;
+      }
+      td{
+        padding-left: 15px;
+      }
+      td>a{
+        color: #333333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <login-form/>
+      </div>
+    </div>
+
+    <!--Mount App-->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            title: 'shopify'
+          }
+        }
+      })
+      app.component('login-form',{
+        template:`
+          <form>
+          <div class=form>
+            <img v-bind:src="logo">
+            <p><span id="login">Log in</span><br><span id="continue">Continue to Shopify</p>
+            <input type="email" name="email" placeholder="Email" required/><br>
+            <input type="password" name="password" placeholder="Password" minlength="5" required/><br>
+            <button @click="goHome">Next</button>
+            <br>
+            <p><span id="new">New to Shopify?</span><span id="getstarted"><a v-bind:href="signup">Get started</a></span>
+            <footer>
+            <tr>
+              <td><a href="#">Terms</a></td>
+              <td><a href="#">Privacy</a></td>
+              <td><a href="#">Help</a></td>
+            <tr>
+            </footer>
+          </div>
+          </form>
+        `,
+        data() {
+          return {
+            email: '',
+            password: '',
+            logo: './assets/shopify.png',
+            signup: 'signup.html',
+          }
+        },
+        methods:{
+          goHome(){
+            location.href="home.html"
+          }
+        }
+      })
+      const mountedApp = app.mount('#app')
+    </script>
+  </body>
+</html>
